@@ -5,12 +5,12 @@ const HtmlPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
-    filename: 'bundle[contenthash].js',
+    filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, 'build'),
     clean: true,
   },
   devtool: 'source-map',
-  plugin: [
+  plugins: [
     new HtmlPlugin({
       template: 'public/index.html'
     }),
@@ -31,9 +31,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'bable-loader',
+          loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-evn']
+            presets: ['@babel/preset-env']
           }
         }
       }
